@@ -11,10 +11,11 @@ export default function Home() {
     <div className="flex flex-col  items-center h-lvh bg-base-100">
       <section className="flex justify-end w-full h-1/3 ">
         <div className="flex justify-between w-full">
-          <button className="btn btn-neutral translate-x-5 translate-y-5">
-            <LightbulbIcon size={30} />
-          </button>
-
+          <Link href={"/tips"}>
+            <button className="btn btn-neutral translate-x-5 translate-y-5">
+              <LightbulbIcon size={30} />
+            </button>
+          </Link>
           <Link href={"/edit"}>
             <button className="btn btn-neutral -translate-x-5 translate-y-5">
               Edit
