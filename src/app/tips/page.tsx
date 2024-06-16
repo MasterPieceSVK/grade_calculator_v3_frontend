@@ -34,10 +34,16 @@ export default function Page() {
             </a>
           </h3>
         </li>
+        <li>
+          <h3>
+            5. When typing decimal numbers like 9.5 use <strong>dots</strong>{" "}
+            and <strong>NOT commas</strong> (9.5 = right; 9,5 = wrong)
+          </h3>
+        </li>
       </ul>
       <Link href={"/"}>
         <button className="btn btn-neutral translate-x-5 translate-y-5">
-          Back
+          Home
         </button>
       </Link>
     </main>

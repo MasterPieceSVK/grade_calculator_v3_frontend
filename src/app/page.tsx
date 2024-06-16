@@ -4,11 +4,12 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Response = {
   data: {
     grades: string[];
+    mode: string;
   };
 };
 
@@ -66,7 +67,7 @@ export default function Home() {
       const { grades } = res.data;
       const queryString = `grades=${encodeURIComponent(
         JSON.stringify(grades)
-      )}`;
+      )}&mode=${res.data.mode}`;
       router.push(`/calculate?${queryString}`);
     },
     onError: (e) => {
@@ -82,6 +83,18 @@ export default function Home() {
       }
     },
   });
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("one") == null ||
+      localStorage.getItem("two") == null ||
+      localStorage.getItem("three") == null ||
+      localStorage.getItem("four") == null ||
+      localStorage.getItem("five") == null
+    ) {
+      router.push("/edit");
+    }
+  }, []);
 
   return (
     <div className="flex flex-col items-center h-lvh bg-base-100">
