@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Play, Roboto } from "next/font/google";
 import "./globals.css";
+import Provider from "../../utils/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ subsets: ["latin"], weight: "400" });
@@ -18,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="lemonade">
-      <body className={play.className}>{children}</body>
+      <body className={play.className}>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }

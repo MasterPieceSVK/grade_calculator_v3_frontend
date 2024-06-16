@@ -26,6 +26,14 @@ export default function Page() {
             provided.
           </h3>
         </li>
+        <li>
+          <h3>
+            4. If the backend server is down feel free to use the old version{" "}
+            <a className="link" href="/old">
+              here
+            </a>
+          </h3>
+        </li>
       </ul>
       <Link href={"/"}>
         <button className="btn btn-neutral translate-x-5 translate-y-5">
