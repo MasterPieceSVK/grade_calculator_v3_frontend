@@ -21,14 +21,17 @@ export default function Page() {
           </h3>
         </li>
         <li>
+          <h3>3. Default weight is 1</h3>
+        </li>
+        <li>
           <h3>
-            3. Don't add % in the edit tab. A good example is the default values
+            4. Don't add % in the edit tab. A good example is the default values
             provided.
           </h3>
         </li>
         <li>
           <h3>
-            4. If the backend server is down feel free to use the old version{" "}
+            5. If the backend server is down feel free to use the old version{" "}
             <a className="link" href="/old">
               here
             </a>
@@ -36,15 +39,13 @@ export default function Page() {
         </li>
         <li>
           <h3>
-            5. When typing decimal numbers like 9.5 use <strong>dots</strong>{" "}
+            6. When typing decimal numbers like 9.5 use <strong>dots</strong>{" "}
             and <strong>NOT commas</strong> (9.5 = right; 9,5 = wrong)
           </h3>
         </li>
       </ul>
       <Link href={"/"}>
-        <button className="btn btn-neutral translate-x-5 translate-y-5">
-          Home
-        </button>
+        <button className="btn btn-neutral mt-2">Home</button>
       </Link>
     </main>
   );

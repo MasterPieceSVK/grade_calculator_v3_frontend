@@ -101,14 +101,13 @@ export default function Home() {
       <section className="flex justify-end w-full h-1/3 ">
         <div className="flex justify-between w-full">
           <Link href={"/tips"}>
-            <button className="btn btn-neutral translate-x-5 translate-y-5">
+            <button className="btn btn-neutral ml-5 mt-5">
               <LightbulbIcon size={30} />
             </button>
           </Link>
+
           <Link href={"/edit"}>
-            <button className="btn btn-neutral -translate-x-5 translate-y-5">
-              Edit
-            </button>
+            <button className="btn btn-neutral mr-5 mt-5">Edit</button>
           </Link>
         </div>
       </section>
@@ -150,7 +149,10 @@ export default function Home() {
             )}
           </div>
         )}
-        <div className="flex items-center h-1/2">
+        <div className="flex items-center h-1/2 gap-2">
+          <Link href={"/history"}>
+            <button className="btn btn-neutral">History</button>
+          </Link>
           <button
             className="btn btn-neutral"
             type="submit"

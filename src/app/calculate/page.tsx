@@ -28,6 +28,7 @@ export default function Page() {
   const [mode, setMode] = useState<string>("");
   const [secondValue, setSecondValue] = useState<string>("1");
   const [calculateError, setCalculateError] = useState<string>("");
+  const [history, setHistory] = useState<string | null>();
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -36,6 +37,9 @@ export default function Page() {
     let modeStr = searchParams.get("mode");
     if (modeStr) {
       setMode(modeStr);
+      if (modeStr == "1") {
+        setSecondValue("10");
+      }
     }
     if (gradesStr) {
       gradesStr = gradesStr.replaceAll(/[\[\]"]/g, "");
@@ -60,11 +64,25 @@ export default function Page() {
     console.log(calculateError);
   }, [calculateError]);
 
+  useEffect(() => {
+    setHistory(localStorage.getItem("history"));
+    if (
+      localStorage.getItem("one") == null ||
+      localStorage.getItem("two") == null ||
+      localStorage.getItem("three") == null ||
+      localStorage.getItem("four") == null ||
+      localStorage.getItem("five") == null
+    ) {
+      router.push("/edit");
+    }
+  }, []);
+
   const calculateMutation = useMutation<Response, Error>({
     mutationFn: () => {
       let gradesArr = grades.split("\n");
 
       const wanted = convertGrade(desired);
+
       let bodyParams = {
         grades: gradesArr,
         wanted,
@@ -72,6 +90,29 @@ export default function Page() {
         nextPoints: secondValue,
         nextWeight: secondValue,
       };
+
+      if (history) {
+        const storedHistory = JSON.parse(history);
+        storedHistory.push({
+          grades: gradesArr,
+          wanted,
+          mode,
+          nextPoints: secondValue,
+          nextWeight: secondValue,
+        });
+        localStorage.setItem("history", JSON.stringify(storedHistory));
+      } else {
+        const newHistory = [
+          {
+            grades: gradesArr,
+            wanted,
+            mode,
+            nextPoints: secondValue,
+            nextWeight: secondValue,
+          },
+        ];
+        localStorage.setItem("history", JSON.stringify(newHistory));
+      }
 
       return axios.post(
         `${process.env.NEXT_PUBLIC_BASEURL}/calculate`,
@@ -133,8 +174,10 @@ export default function Page() {
             )}{" "}
           </div>
         ) : (
-          <h3 className="w-5/6 text-center text-wrap">
-            Please review if the grades were correctly recognized.
+          <h3 className="w-5/6 text-center text-wrap text-sm">
+            Please review if the grades were correctly recognized. If you want
+            to add weight add '@0.25' (0.25 is the weight) to the grade (e.g
+            9/10@0.5)
           </h3>
         )}
         <textarea

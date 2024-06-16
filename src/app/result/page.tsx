@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function Page() {
@@ -28,7 +29,7 @@ export default function Page() {
           className={`text-7xl rounded-lg p-4 ${
             mode == "3" && needed && Number(needed.split("%")[0]) < 0
               ? "bg-green-500"
-              : Number(needed.split("%")[0]) > Number(secondValue)
+              : Number(needed.split("%")[0]) > 100
               ? "bg-red-500"
               : "bg-orange-500"
           }`}
@@ -37,6 +38,9 @@ export default function Page() {
         </h1>
       )}
       {needed && !needed.includes("%") && <h2 className="text-3xl">points</h2>}
+      <Link href={"/"}>
+        <button className="btn btn-neutral mt-6">Home</button>
+      </Link>
     </main>
   );
 }
