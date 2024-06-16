@@ -2,9 +2,24 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { convertGrade } from "../../../utils/convertGrade";
+type Error = {
+  response?: {
+    data?: {
+      error: string;
+    };
+  };
+  message: string;
+  code?: string;
+};
+
+type Response = {
+  data: {
+    needed: string;
+  };
+};
 
 export default function Page() {
   const [scanError, setScanError] = useState<boolean>(false);
@@ -12,9 +27,10 @@ export default function Page() {
   const [desired, setDesired] = useState<string>("1");
   const [mode, setMode] = useState<string>("");
   const [secondValue, setSecondValue] = useState<string>("1");
+  const [calculateError, setCalculateError] = useState<string>("");
 
   const searchParams = useSearchParams();
-
+  const router = useRouter();
   useEffect(() => {
     let gradesStr = searchParams.get("grades");
     let modeStr = searchParams.get("mode");
@@ -40,7 +56,11 @@ export default function Page() {
     }
   }
 
-  const calculateMutation = useMutation({
+  useEffect(() => {
+    console.log(calculateError);
+  }, [calculateError]);
+
+  const calculateMutation = useMutation<Response, Error>({
     mutationFn: () => {
       let gradesArr = grades.split("\n");
 
@@ -59,10 +79,20 @@ export default function Page() {
       );
     },
     onSuccess: (res) => {
-      console.log(res);
+      router.push(
+        `/result?needed=${res.data.needed}&secondvalue=${secondValue}&mode=${mode}`
+      );
     },
     onError: (e) => {
-      console.log(e);
+      if (e.response?.data) {
+        setCalculateError(e.response.data.error);
+      } else if (e.code === "ERR_NETWORK") {
+        setCalculateError(
+          "Network error: The server might be down. It tends to shut down sometimes. Feel free to use the old version"
+        );
+      } else if (e.message) {
+        setCalculateError(e.message);
+      }
     },
   });
 
@@ -90,9 +120,23 @@ export default function Page() {
             to resolve the issue
           </h4>
         )}
-        <h3 className="w-5/6 text-center text-wrap">
-          Please review if the grades were correctly recognized.
-        </h3>
+        {calculateError ? (
+          <div className="text-red-500  text-center text-wrap w-5/6">
+            <h3>
+              {!calculateError.includes("Network error:") && "Error:"}{" "}
+              {calculateError}
+            </h3>
+            {calculateError.includes("Network error:") && (
+              <a className="link" href="/old">
+                here
+              </a>
+            )}{" "}
+          </div>
+        ) : (
+          <h3 className="w-5/6 text-center text-wrap">
+            Please review if the grades were correctly recognized.
+          </h3>
+        )}
         <textarea
           placeholder="Your grades go here"
           className="textarea textarea-bordered textarea-lg w-full max-w-xs h-1/2 md:h-1/3"
