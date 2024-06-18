@@ -12,7 +12,7 @@ export default function Page() {
     const storedHistory = localStorage.getItem("history");
     if (storedHistory) {
       try {
-        setHistory(JSON.parse(storedHistory));
+        setHistory(JSON.parse(storedHistory).reverse());
       } catch (e) {
         console.error("Failed to parse history from localStorage:", e);
         setHistory([]);
@@ -37,7 +37,7 @@ export default function Page() {
             <h4 className="text-black">History is empty</h4>
           </div>
         )}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 items-center ">
           {history.length > 0 &&
             history.map((info, index) => <HistoryCard {...info} key={index} />)}
         </div>

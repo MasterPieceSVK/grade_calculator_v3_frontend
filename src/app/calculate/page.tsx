@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { convertGrade } from "../../../utils/convertGrade";
+
 type Error = {
   response?: {
     data?: {
@@ -32,12 +33,21 @@ export default function Page() {
 
   const searchParams = useSearchParams();
   const router = useRouter();
+
   useEffect(() => {
     let gradesStr = searchParams.get("grades");
     let modeStr = searchParams.get("mode");
+    const desiredParam = searchParams.get("desired");
+    const secondValueParam = searchParams.get("secondValue");
+    if (desiredParam) {
+      setDesired(desiredParam);
+    }
+    if (secondValueParam) {
+      setSecondValue(secondValueParam);
+    }
     if (modeStr) {
       setMode(modeStr);
-      if (modeStr == "1") {
+      if (modeStr === "1" && !secondValueParam) {
         setSecondValue("10");
       }
     }
@@ -85,7 +95,7 @@ export default function Page() {
 
       let bodyParams = {
         grades: gradesArr,
-        wanted,
+        wanted: desired,
         mode,
         nextPoints: secondValue,
         nextWeight: secondValue,
@@ -95,7 +105,7 @@ export default function Page() {
         const storedHistory = JSON.parse(history);
         storedHistory.push({
           grades: gradesArr,
-          wanted,
+          wanted: desired,
           mode,
           nextPoints: secondValue,
           nextWeight: secondValue,
@@ -188,11 +198,10 @@ export default function Page() {
         ></textarea>
         <div className="w-full flex flex-col items-center ">
           <h4 className="text-sm">
-            Next exam {mode == "1" ? "points" : "weight"}
+            Next exam {mode === "1" ? "points" : "weight"}
           </h4>
           <input
             type="number"
-            defaultValue={secondValue}
             className="input input-bordered w-full max-w-xs text-center"
             value={secondValue}
             onChange={(e) => {
@@ -203,6 +212,7 @@ export default function Page() {
 
         <select
           className="select select-bordered w-full max-w-xs text-center"
+          value={desired}
           onChange={handleSelectChange}
         >
           <option value={0} disabled>
