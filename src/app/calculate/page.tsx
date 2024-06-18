@@ -159,8 +159,8 @@ export default function Page() {
       <main className="bg-base-100 flex flex-col items-center justify-center h-lvh gap-4 text-black">
         {scanError && (
           <h4 className="text-red-600 text-center text-wrap w-5/6">
-            The screenshot wasn't recognized. Please try another screenshot or
-            use the{" "}
+            The screenshot wasn&apos;t recognized. Please try another screenshot
+            or use the{" "}
             <a className="link" href="/old">
               old version
             </a>{" "}
@@ -186,8 +186,8 @@ export default function Page() {
         ) : (
           <h3 className="w-5/6 text-center text-wrap text-sm">
             Please review if the grades were correctly recognized. If you want
-            to add weight add '@0.25' (0.25 is the weight) to the grade (e.g
-            9/10@0.5)
+            to add weight add &apos;@0.25&apos; (0.25 is the weight) to the
+            grade (e.g 9/10@0.5)
           </h3>
         )}
         <textarea

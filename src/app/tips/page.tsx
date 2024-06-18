@@ -15,8 +15,8 @@ export default function Page() {
         <li>
           <h3>
             2. If you want to add weight to grades, after the scanning add{" "}
-            <strong>'@0.25'</strong> (0.25 is the weight) to the text. <br /> So
-            the result should look like this for example: <br />
+            <strong>&apos;@0.25&apos;</strong> (0.25 is the weight) to the text.{" "}
+            <br /> So the result should look like this for example: <br />
             <strong>10/10@0.5 or 60%@0.75</strong>
           </h3>
         </li>
@@ -25,8 +25,8 @@ export default function Page() {
         </li>
         <li>
           <h3>
-            4. Don't add % in the edit tab. A good example is the default values
-            provided.
+            4. Don&apos;t add % in the edit tab. A good example is the default
+            values provided.
           </h3>
         </li>
         <li>

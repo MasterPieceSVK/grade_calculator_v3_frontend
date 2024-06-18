@@ -34,8 +34,8 @@ export default function Page() {
     <main className="bg-base-100 text-black flex flex-col items-center gap-5 mt-10">
       <h2 className="text-l text-center text-wrap w-5/6">
         <strong className="text-xl">Please enter your scale below.</strong>{" "}
-        <br /> Don't use the % symbol.
-        <br /> Don't forget to save.
+        <br /> Don&apos;t use the % symbol.
+        <br /> Don&apos;t forget to save.
       </h2>
       <div className="overflow-x-auto flex justify-center">
         <table className="table">
