@@ -24,7 +24,7 @@ export default function Page() {
           {needed}
         </h1>
       )}
-      {mode == "3" && (
+      {mode == "3" && needed !== null && (
         <h1
           className={`text-7xl rounded-lg p-4 ${
             mode == "3" && needed && Number(needed.split("%")[0]) < 0
