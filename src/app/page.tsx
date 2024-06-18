@@ -118,7 +118,6 @@ export default function Home() {
         <h2 className="text-black text-xl font-semibold mb-5">
           Choose an image
         </h2>
-
         <input
           type="file"
           className="file-input file-input-bordered w-full max-w-xs text-black border-2 border-black"
@@ -149,17 +148,25 @@ export default function Home() {
             )}
           </div>
         )}
-        <div className="flex items-center h-1/2 gap-2">
-          <Link href={"/history"}>
-            <button className="btn btn-neutral">History</button>
-          </Link>
-          <button
-            className="btn btn-neutral"
-            type="submit"
-            disabled={!image || selectedMode === 0}
-          >
-            Send
-          </button>
+        <div className="h-1/2 flex flex-col justify-center items-center">
+          <div className="flex items-center gap-2">
+            <Link href={"/history"}>
+              <button className="btn btn-neutral">History</button>
+            </Link>
+            <button
+              className="btn btn-neutral"
+              type="submit"
+              disabled={!image || selectedMode === 0 || sendMutation.isPending}
+            >
+              {sendMutation.isPending ? "Recognizing" : "Submit"}
+            </button>
+          </div>
+
+          {sendMutation.isPending && (
+            <h2 className="text-black text-sm mt-3 text-center text-wrap">
+              This may take up to 30 second. Please be patient.
+            </h2>
+          )}
         </div>
       </form>
     </div>

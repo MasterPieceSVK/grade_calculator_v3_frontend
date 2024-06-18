@@ -21,6 +21,11 @@ export default function Page() {
     setLoaded(true);
   }, []);
 
+  function handleDelete() {
+    localStorage.setItem("history", "");
+    location.reload();
+  }
+
   return (
     <div className="flex flex-col justify-center items-center bg-base-100 text-black text-center text-l text-wrap">
       <section className="flex justify-end w-full h-1/3 ">
@@ -41,6 +46,14 @@ export default function Page() {
           {history.length > 0 &&
             history.map((info, index) => <HistoryCard {...info} key={index} />)}
         </div>
+        {loaded && history.length != 0 && (
+          <button
+            className="btn btn-neutral w-full mt-4 mb-8 hover:bg-red-500 hover:border-red-500 hover:text-black"
+            onClick={handleDelete}
+          >
+            Delete history
+          </button>
+        )}
       </main>
     </div>
   );

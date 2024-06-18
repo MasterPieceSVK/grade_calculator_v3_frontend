@@ -224,8 +224,12 @@ export default function Page() {
           <option value={4}>4</option>
           <option value={5}>5</option>
         </select>
-        <button className="btn btn-neutral mr-4" onClick={handleCalculate}>
-          Calculate
+        <button
+          className="btn btn-neutral mr-4"
+          onClick={handleCalculate}
+          disabled={calculateMutation.isPending}
+        >
+          {calculateMutation.isPending ? "Calculating" : "Calculate"}
         </button>
       </main>
     </div>
