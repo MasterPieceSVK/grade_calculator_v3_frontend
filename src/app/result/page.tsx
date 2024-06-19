@@ -1,8 +1,9 @@
 "use client";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-export default function Page() {
+function PageContent() {
   const searchParams = useSearchParams();
   const needed = searchParams.get("needed");
   const mode = searchParams.get("mode");
@@ -42,5 +43,13 @@ export default function Page() {
         <button className="btn btn-neutral mt-6">Home</button>
       </Link>
     </main>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PageContent />
+    </Suspense>
   );
 }

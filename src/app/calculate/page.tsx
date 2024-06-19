@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { convertGrade } from "../../../utils/convertGrade";
 
 type Error = {
@@ -22,7 +22,7 @@ type Response = {
   };
 };
 
-export default function Page() {
+export function PageContent() {
   const [scanError, setScanError] = useState<boolean>(false);
   const [grades, setGrades] = useState<string>("");
   const [desired, setDesired] = useState<string>("1");
@@ -233,5 +233,13 @@ export default function Page() {
         </button>
       </main>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PageContent />
+    </Suspense>
   );
 }
