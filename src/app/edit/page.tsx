@@ -11,11 +11,20 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
-    setOne(Number(localStorage.getItem("one")) * 100 || "85");
-    setTwo(Number(localStorage.getItem("two")) * 100 || "70");
-    setThree(Number(localStorage.getItem("three")) * 100 || "50");
-    setFour(Number(localStorage.getItem("four")) * 100 || "30");
-    setFive(Number(localStorage.getItem("five")) * 100 || "0");
+    const getValue = (key: string, defaultValue: number) => {
+      const value = localStorage.getItem(key);
+      if (value !== null) {
+        const numberValue = Number(value) * 100;
+        return numberValue % 1 === 0 ? numberValue : numberValue.toFixed(2);
+      }
+      return defaultValue;
+    };
+
+    setOne(getValue("one", 85));
+    setTwo(getValue("two", 70));
+    setThree(getValue("three", 50));
+    setFour(getValue("four", 30));
+    setFive(getValue("five", 0));
   }, []);
 
   function saveScale(e: any) {
