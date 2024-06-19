@@ -9,8 +9,8 @@ const play = Play({ subsets: ["latin"], weight: "400" });
 
 export const metadata = {
   manifest: "/manifest.json",
-  title: "Flashcards",
-  description: "Flashcards",
+  title: "Grade Calculator",
+  description: "Grade Calculator",
 };
 
 export default function RootLayout({
