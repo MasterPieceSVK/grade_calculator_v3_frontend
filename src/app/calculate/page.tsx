@@ -22,7 +22,7 @@ type Response = {
   };
 };
 
-export function PageContent() {
+function PageContent() {
   const [scanError, setScanError] = useState<boolean>(false);
   const [grades, setGrades] = useState<string>("");
   const [desired, setDesired] = useState<string>("1");
