@@ -32,21 +32,27 @@ export default function Page() {
         <li>
           <h3>
             3. Be aware that when scanning % it will scan the overall % of the
-            subject so don&apos; forget to delete it
+            subject so don&apos;t forget to delete it
           </h3>
         </li>
         <li>
-          <h3>4. Default weight is 1</h3>
+          <h3>
+            4. It has a tendency to not recognize dots(commas) so make sure to{" "}
+            <strong>double check if everything was recognized correctly</strong>
+          </h3>
+        </li>
+        <li>
+          <h3>5. Default weight is 1</h3>
         </li>
         <li>
           <h3>
-            5. Don&apos;t add % in the edit tab. A good example is the default
+            6. Don&apos;t add % in the edit tab. A good example is the default
             values provided.
           </h3>
         </li>
         <li>
           <h3>
-            6. If the server is down feel free to use the old version{" "}
+            7. If the server is down feel free to use the old version{" "}
             <a className="link" href="/old">
               here
             </a>
@@ -54,7 +60,7 @@ export default function Page() {
         </li>
         <li>
           <h3>
-            7. When typing decimal numbers like 9.5 use <strong>dots</strong>{" "}
+            8. When typing decimal numbers like 9.5 use <strong>dots</strong>{" "}
             and <strong>NOT commas</strong> (9.5 = right; 9,5 = wrong)
           </h3>
         </li>
