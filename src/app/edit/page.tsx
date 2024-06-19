@@ -1,24 +1,22 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Page() {
-  const [one, setOne] = useState(
-    Number(localStorage.getItem("one")) * 100 || "85"
-  );
-  const [two, setTwo] = useState(
-    Number(localStorage.getItem("two")) * 100 || "70"
-  );
-  const [three, setThree] = useState(
-    Number(localStorage.getItem("three")) * 100 || "50"
-  );
-  const [four, setFour] = useState(
-    Number(localStorage.getItem("four")) * 100 || "30"
-  );
-  const [five, setFive] = useState(
-    Number(localStorage.getItem("five")) * 100 || "0"
-  );
+  const [one, setOne] = useState<number | string>();
+  const [two, setTwo] = useState<number | string>();
+  const [three, setThree] = useState<number | string>();
+  const [four, setFour] = useState<number | string>();
+  const [five, setFive] = useState<number | string>();
   const router = useRouter();
+
+  useEffect(() => {
+    setOne(Number(localStorage.getItem("one")) * 100 || "85");
+    setTwo(Number(localStorage.getItem("two")) * 100 || "70");
+    setThree(Number(localStorage.getItem("three")) * 100 || "50");
+    setFour(Number(localStorage.getItem("four")) * 100 || "30");
+    setFive(Number(localStorage.getItem("five")) * 100 || "0");
+  }, []);
 
   function saveScale(e: any) {
     e.preventDefault();
