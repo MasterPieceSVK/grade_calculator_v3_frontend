@@ -92,10 +92,9 @@ function PageContent() {
       let gradesArr = grades.split("\n");
 
       const wanted = convertGrade(desired);
-
       let bodyParams = {
         grades: gradesArr,
-        wanted: desired,
+        wanted,
         mode,
         nextPoints: secondValue,
         nextWeight: secondValue,
@@ -115,7 +114,7 @@ function PageContent() {
         const newHistory = [
           {
             grades: gradesArr,
-            wanted,
+            wanted: desired,
             mode,
             nextPoints: secondValue,
             nextWeight: secondValue,
