@@ -134,7 +134,7 @@ export default function Home() {
           </option>
           <option value={1}>Points (9.5/10)</option>
           <option value={3}>% (95%)</option>
-          <option value={2}>Grades (1)</option>
+          {/* <option value={2}>Grades (1)</option> */}
         </select>
         {requestError && (
           <div className="flex flex-col items-center gap-3 mt-5 w-5/6">

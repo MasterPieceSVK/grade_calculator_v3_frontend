@@ -25,7 +25,13 @@ export default function Page() {
     localStorage.setItem("three", String(Number(three) / 100));
     localStorage.setItem("four", String(Number(four) / 100));
     localStorage.setItem("five", String(Number(five) / 100));
-    router.push("/");
+    const visited = localStorage.getItem("visited");
+    if (visited) {
+      router.push("/");
+    } else {
+      localStorage.setItem("visited", "true");
+      router.push("/tips");
+    }
   }
 
   return (

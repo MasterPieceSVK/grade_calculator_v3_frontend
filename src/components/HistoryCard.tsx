@@ -19,9 +19,10 @@ export default function HistoryCard(props: Card) {
   return (
     <Link
       href={`/calculate?grades=${props.grades}&mode=${props.mode}&desired=${props.wanted}&secondValue=${props.nextPoints}`}
+      className="w-10/12"
     >
-      <div className="text-white bg-neutral p-6 rounded-lg ">
-        <h4>{grades}</h4>
+      <div className="text-white bg-neutral p-6 rounded-lg flex flex-col items-center">
+        <h4 className="text-center text-wrap">{grades}</h4>
         {props.mode != "2" && (
           <h4>
             Next {props.mode == "1" ? "points" : "weight"}: {props.nextPoints}

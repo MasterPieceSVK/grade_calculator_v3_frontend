@@ -35,20 +35,20 @@ export default function Page() {
           </Link>
         </div>
       </section>
-      <main className="h-2/3 mt-3">
+      <main className="h-2/3 mt-3 w-full">
         {loaded && history.length === 0 && (
           <div className="flex flex-col justify-center items-center ">
             <SadIcon size={150} />
             <h4 className="text-black">History is empty</h4>
           </div>
         )}
-        <div className="flex flex-col gap-1 items-center ">
+        <div className="flex flex-col gap-1 items-center w-full ">
           {history.length > 0 &&
             history.map((info, index) => <HistoryCard {...info} key={index} />)}
         </div>
         {loaded && history.length != 0 && (
           <button
-            className="btn btn-neutral w-full mt-4 mb-8 hover:bg-red-500 hover:border-red-500 hover:text-black"
+            className="btn btn-neutral w-10/12 mt-4 mb-8 hover:bg-red-500 hover:border-red-500 hover:text-black"
             onClick={handleDelete}
           >
             Delete history
