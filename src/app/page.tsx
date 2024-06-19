@@ -34,7 +34,6 @@ export default function Home() {
   const router = useRouter();
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("submit");
     if (image) {
       sendMutation.mutate({ image });
     }
@@ -71,7 +70,7 @@ export default function Home() {
       router.push(`/calculate?${queryString}`);
     },
     onError: (e) => {
-      console.log(e);
+      // console.log(e);
       if (e.response?.data) {
         setRequestError(e.response.data.error);
       } else if (e.code === "ERR_NETWORK") {

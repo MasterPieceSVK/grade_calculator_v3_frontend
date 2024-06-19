@@ -71,10 +71,6 @@ function PageContent() {
   }
 
   useEffect(() => {
-    console.log(calculateError);
-  }, [calculateError]);
-
-  useEffect(() => {
     setHistory(localStorage.getItem("history"));
     if (
       localStorage.getItem("one") == null ||

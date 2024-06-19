@@ -41,7 +41,6 @@ export default function Page() {
         );
       });
     }
-    console.log(points, maxPoints, grade, nextMaxPoints);
   }
 
   return (
