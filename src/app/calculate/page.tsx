@@ -181,7 +181,7 @@ function PageContent() {
         ) : (
           <h3 className="w-5/6 text-center text-wrap text-sm">
             Please review if the grades were correctly recognized. If you want
-            to add weight add &apos;@0.25&apos; (0.25 is the weight) to the
+            to add weight, add &apos;@0.25&apos; (0.25 is the weight) to the
             grade (e.g 9/10@0.5)
           </h3>
         )}
