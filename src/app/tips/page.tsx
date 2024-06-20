@@ -66,7 +66,7 @@ export default function Page() {
         </li>
       </ul>
       <Link href={"/"}>
-        <button className="btn btn-neutral mt-2">Home</button>
+        <button className="btn btn-neutral mt-2 mb-7">Home</button>
       </Link>
     </main>
   );
