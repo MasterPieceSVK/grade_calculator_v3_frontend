@@ -6,7 +6,13 @@ The backend for this project is [here](https://github.com/MasterPieceSVK/grade_c
 ![screenshot](https://github.com/MasterPieceSVK/grade_calculator_v3_frontend/blob/master/screenshot2.jpg)
 ![screenshot](https://github.com/MasterPieceSVK/grade_calculator_v3_frontend/blob/master/screenshot1.jpg)
 
-To run the PWA on localhost:
+## To run the PWA on localhost:
+
+make an .env.local file in / and add this:
+```
+NEXT_PUBLIC_BASEURL=http://localhost:5000
+```
+then:
 
 ```bash
 npm run dev
