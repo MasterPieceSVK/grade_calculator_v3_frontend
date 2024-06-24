@@ -8,7 +8,7 @@ The backend for this project is [here](https://github.com/MasterPieceSVK/grade_c
 
 ## To run the PWA on localhost:
 
-make an .env.local file in / and add this:
+make an .env.local file in / and link it to the backend link like this:
 ```
 NEXT_PUBLIC_BASEURL=http://localhost:5000
 ```
