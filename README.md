@@ -20,7 +20,7 @@ bun dev
 ```
 
 
-## Screenshots
+## Some screenshots (not all functionalities are in here) 
 
 ![screenshot](https://github.com/MasterPieceSVK/grade_calculator_v3_frontend/blob/master/screenshot4.jpg)
 ![screenshot](https://github.com/MasterPieceSVK/grade_calculator_v3_frontend/blob/master/screenshot3.jpg)
